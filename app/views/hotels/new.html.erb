@@ -1,0 +1,17 @@
+<div class="search">
+  <div class="row">
+    <div class="text-center">
+      <%= form_tag(new_hotel_path, method: :get, class: 'form-inline') do %>
+        <div class="form-group">
+          <%= text_field_tag :largeclass, @largeclass, class: 'form-control input-lg', placeholder: "国コードを入力", size: 40 %>
+        　<%= text_field_tag :middleclass, @middleclass, class: 'form-control input-lg', placeholder: "都道府県コードを入力", size: 40 %>
+        　<%= text_field_tag :smallclass, @smallclass, class: 'form-control input-lg', placeholder: "市コードを入力", size: 40 %>
+        　<%= text_field_tag :detailclass, @detailclass, class: 'form-control input-lg', placeholder: "詳細地区コードを入力", size: 40 %>
+        </div>
+        <%= submit_tag 'ホテルを検索', class: 'btn btn-success btn-lg' %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<%= render 'test', hotels: @hotels %>
