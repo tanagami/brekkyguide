@@ -1,0 +1,2 @@
+class SmallClass < ApplicationRecord
+end
