@@ -11,4 +11,11 @@
   </div>
 <% end %>
 
-<p>テスト</p>
+
+<% @prefectures.each do |prefecture| %>
+
+<%= link_to prefecture.name, "/show_small/#{prefecture.id}" %>
+
+<br><br>
+
+<% end %>

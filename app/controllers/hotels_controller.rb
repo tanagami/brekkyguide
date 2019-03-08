@@ -6,7 +6,8 @@ class HotelsController < ApplicationController
     @middleclass = params[:middleclass]
     @smallclass = params[:smallclass]
     @detailclass = params[:detailclass]
-    if @detailclass.present?
+
+    if @smallclass.present?
       uri = URI.parse("https://app.rakuten.co.jp/services/api/Travel/SimpleHotelSearch/20170426?format=json&largeClassCode=#{@largeclass}&middleClassCode=#{@middleclass}&smallClassCode=#{@smallclass}&detailClassCode=#{@detailclass}&affiliateId=17e357ca.94ed3df2.17e357cb.ba7a82c9&responseType=large&applicationId=1029124388619924322")
       json = Net::HTTP.get(uri)
       results_json = JSON.parse(json)
@@ -34,11 +35,6 @@ class HotelsController < ApplicationController
     review_count = result['hotel'].first["hotelBasicInfo"]["reviewCount"]
     review_average = result['hotel'].first["hotelBasicInfo"]["reviewAverage"]
     meal_average = result['hotel'].second["hotelRatingInfo"]["mealAverage"]
-    if result['hotel'].fourth["hotelFacilitiesInfo"]["aboutMealPlace"].first["breakfastPlace"].present?
-    breakfast_place = true
-    else
-    breakfast_place = false
-    end
     {
       name: name,
       kananame: kananame,
@@ -51,7 +47,6 @@ class HotelsController < ApplicationController
       review_count: review_count,
       review_average: review_average,
       meal_average: meal_average,
-      breakfast_place: breakfast_place,
     }
   end
 end

@@ -1,0 +1,21 @@
+<% @small_classes.each do |small_class| %>
+
+<% detail_class = DetailClass.find_by(small_class_id: small_class.id) %>
+
+<% if detail_class.present? %>
+
+<%= link_to small_class.name, "/show_detail/#{small_class.id}" %>
+
+<br><br>
+
+<% else %>
+
+<% middle_class = MiddleClass.find(small_class.middle_class_id) %>
+
+<%= link_to small_class.name, controller: "hotels", action: "new", largeclass: "japan", middleclass: middle_class.code, smallclass: small_class.code, detailclass: "" %>
+
+<br><br>
+
+<% end %>
+
+<% end %>
