@@ -18,7 +18,18 @@ class HotelsController < ApplicationController
         @hotels << hotel
       end
     end
-
+    
+    if params[:keyword].present?
+      @keyword = URI.escape(params[:keyword])
+      uri = URI.parse("https://app.rakuten.co.jp/services/api/Travel/KeywordHotelSearch/20170426?format=json&keyword=#{@keyword}&responseType=large&affiliateId=17e357ca.94ed3df2.17e357cb.ba7a82c9&applicationId=1029124388619924322")
+      json = Net::HTTP.get(uri)
+      results_json = JSON.parse(json)
+      results = results_json["hotels"]
+      results.each do |result|
+        hotel = Hotel.new(read(result))
+        @hotels << hotel
+      end
+    end
   end
   
   private
