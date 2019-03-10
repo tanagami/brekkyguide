@@ -1,0 +1,11 @@
+<% if current_user.like?(hotel) %>
+  <%= form_tag(favorite_path(hotel.id), method: :delete) do %>
+    <%= hidden_field_tag :hotel_id, hotel.id %>
+    <%= submit_tag 'Unlike', class: 'btn btn-success' %>
+  <% end %>
+<% else %>
+  <%= form_tag(favorites_path) do %>
+    <%= hidden_field_tag :hotel_no, hotel.no %>
+    <%= submit_tag 'Like it', class: 'btn btn-primary' %>
+  <% end %>
+<% end %>

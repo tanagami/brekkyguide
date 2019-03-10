@@ -13,8 +13,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :new, :create]
   
   resources :hotels, only: [:new]
-  resources :middle_classes, only: [:new]
-  resources :small_classes, only: [:new]
-  resources :detail_classes, only: [:new]
   resources :areas, only: [:show_small]
+  
+  resources :favorites, only: [:create, :destroy]
 end

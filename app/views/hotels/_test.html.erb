@@ -11,6 +11,10 @@
 レビュー数:<%= hotel.review_count %><br>
 レビュー平均:<%= hotel.review_average %><br>
 朝食レビュー:<%= hotel.meal_average %><br>
-朝食場所:<%= hotel.breakfast_place %><br><br><br><br>
+朝食場所:<%= hotel.breakfast_place %>
+<% if logged_in? %>
+<%= render 'favorites/like_button', hotel: hotel %>
+<% end %>
+<br><br><br><br>
 <% end %>
 </div>

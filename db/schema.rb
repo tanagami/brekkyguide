@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190305120520) do
+ActiveRecord::Schema.define(version: 20190310021526) do
 
   create_table "detail_classes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "code"
@@ -19,6 +19,16 @@ ActiveRecord::Schema.define(version: 20190305120520) do
     t.string   "name"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+  end
+
+  create_table "favorites", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "user_id"
+    t.integer  "hotel_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["hotel_id"], name: "index_favorites_on_hotel_id", using: :btree
+    t.index ["user_id", "hotel_id"], name: "index_favorites_on_user_id_and_hotel_id", unique: true, using: :btree
+    t.index ["user_id"], name: "index_favorites_on_user_id", using: :btree
   end
 
   create_table "hotels", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -30,12 +40,15 @@ ActiveRecord::Schema.define(version: 20190305120520) do
     t.string   "access"
     t.string   "image_url"
     t.string   "thumbnail_url"
-    t.string   "review_count"
-    t.string   "review_average"
-    t.string   "meal_average"
+    t.integer  "review_count"
+    t.float    "review_average",  limit: 24
+    t.float    "meal_average",    limit: 24
     t.string   "breakfast_place"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.integer  "no"
+    t.string   "information_url"
+    t.integer  "min_charge"
   end
 
   create_table "middle_classes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -61,4 +74,6 @@ ActiveRecord::Schema.define(version: 20190305120520) do
     t.datetime "updated_at",      null: false
   end
 
+  add_foreign_key "favorites", "hotels"
+  add_foreign_key "favorites", "users"
 end
