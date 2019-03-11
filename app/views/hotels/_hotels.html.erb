@@ -1,4 +1,4 @@
-<% if hotels %>
+<% if hotels.present? %>
   <div class="row">
     <% hotels.each do |hotel| %>
       <div class="item">
@@ -8,7 +8,17 @@
               <img src="<%= hotel.image_url %>" alt="" >
             </div>
             <div class="panel-body">
-              <p class="item-title"><%= hotel.name %></p>
+              <% if hotel.persisted? %>
+                <p class="item-title"><%= link_to hotel.name, hotel %></p>
+              <% else %>
+                <p class="item-title"><%= hotel.name %></p>
+              <% end %>
+              食事レビュー：<%= hotel.meal_average %>
+              <div class="buttons text-center">
+                <% if logged_in? %>
+                  <%= render 'favorites/like_button', hotel: hotel %>
+                <% end %>
+              </div>
             </div>
           </div>
         </div>

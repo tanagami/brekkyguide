@@ -3,6 +3,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @hotels = @user.hotels
+    @count_like = @user.hotels.count
   end
 
   def new

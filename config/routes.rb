@@ -11,9 +11,6 @@ Rails.application.routes.draw do
   get 'show_detail/:id', to: 'areas#show_detail'
   
   resources :users, only: [:show, :new, :create]
-  
-  resources :hotels, only: [:new]
-  resources :areas, only: [:show_small]
-  
+  resources :hotels, only: [:new, :show]
   resources :favorites, only: [:create, :destroy]
 end

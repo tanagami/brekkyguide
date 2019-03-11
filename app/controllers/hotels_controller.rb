@@ -14,22 +14,33 @@ class HotelsController < ApplicationController
       results = results_json["hotels"]
       
       results.each do |result|
-        hotel = Hotel.find_or_initialize_by(read(result))
+        hotel = Hotel.find_by(no: result['hotel'].first["hotelBasicInfo"]["hotelNo"])
+        unless hotel
+          hotel = Hotel.new(read(result))
+        end
         @hotels << hotel
       end
     end
     
     if params[:keyword].present?
       @keyword = URI.escape(params[:keyword])
-      uri = URI.parse("https://app.rakuten.co.jp/services/api/Travel/KeywordHotelSearch/20170426?format=json&keyword=#{@keyword}&responseType=large&affiliateId=17e357ca.94ed3df2.17e357cb.ba7a82c9&applicationId=1029124388619924322")
+      uri = URI.parse("https://app.rakuten.co.jp/services/api/Travel/KeywordHotelSearch/20170426?format=json&\keyword=#{@keyword}&responseType=large&affiliateId=17e357ca.94ed3df2.17e357cb.ba7a82c9&applicationId=1029124388619924322")
       json = Net::HTTP.get(uri)
       results_json = JSON.parse(json)
       results = results_json["hotels"]
+      
       results.each do |result|
-        hotel = Hotel.new(read(result))
+        hotel = Hotel.find_by(no: result['hotel'].first["hotelBasicInfo"]["hotelNo"])
+        unless hotel
+          hotel = Hotel.new(read(result))
+        end
         @hotels << hotel
       end
     end
   end
-
+  
+  def show
+    @hotel = Hotel.find(params[:id])
+    @like_users = @hotel.users
+  end
 end

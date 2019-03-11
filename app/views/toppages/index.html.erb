@@ -3,9 +3,6 @@
     <div class="cover-inner">
       <div class="cover-contents">
         <h1>Brekky Guide</h1>
-          <% unless logged_in? %>
-            <%= link_to 'Brekky Guideを始める', signup_path, class: 'btn btn-success btn-lg' %>
-          <% end %>
       </div>
     </div>
   </div>
@@ -24,10 +21,9 @@
   </div>
 </div>
 
-<% @prefectures.each do |prefecture| %>
-
-<%= link_to prefecture.name, "/show_small/#{prefecture.id}" %>
-
-<br><br>
-
-<% end %>
+<div>
+  <% @middle_classes.each do |middle_class| %>
+    <%= link_to middle_class.name, "/show_small/#{middle_class.id}" %>
+    <br><br>
+  <% end %>
+</div>

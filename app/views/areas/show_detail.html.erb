@@ -1,10 +1,12 @@
 <% @detail_classes.each do |detail_class| %>
-
-<% middle_class = MiddleClass.find(detail_class.middle_class_id) %>
-<% small_class = SmallClass.find(detail_class.small_class_id) %>
-
-<%= link_to detail_class.name, controller: "hotels", action: "new", largeclass: "japan", middleclass: middle_class.code, smallclass: small_class.code, detailclass: detail_class.code %>
-
-<br><br>
-
+  <% middle_class = MiddleClass.find(detail_class.middle_class_id) %>
+  <% small_class = SmallClass.find(detail_class.small_class_id) %>
+  <%= link_to detail_class.name,
+    controller: "hotels",
+    action: "new",
+    largeclass: "japan",
+    middleclass: middle_class.code,
+    smallclass: small_class.code,
+    detailclass: detail_class.code %>
+  <br><br>
 <% end %>
