@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   
   get 'signup', to: 'users#new'
   
+  get 'show_middle', to: 'areas#show_middle'
   get 'show_small/:id', to: 'areas#show_small'
   get 'show_detail/:id', to: 'areas#show_detail'
   

@@ -8,22 +8,77 @@
   </div>
 <% end %>
 
-<div class="search">
-  <div class="row">
-    <div class="text-center">
-      <%= form_tag(new_hotel_path, method: :get, class: 'form-inline') do %>
-        <div class="form-group">
-          <%= text_field_tag :keyword, @keyword, class: 'form-control input-lg', placeholder: "キーワードを入力", size: 40 %>
-        </div>
-        <%= submit_tag 'ホテルを検索', class: 'btn btn-success btn-lg' %>
-      <% end %>
+<div class="container">
+  <h3><i class="fas fa-search"></i>キーワードから探す</h3>
+    <div class="row search_keywords">
+      <div class="text-center col-sm-12">
+        <%= form_tag(new_hotel_path, method: :get, class: 'form-inline') do %>
+          <div class="form-group">
+            <%= text_field_tag :keyword, @keyword, class: 'form-control input-lg', placeholder: "キーワードを入力", size: 40 %>
+          </div>
+          <%= submit_tag 'ホテルを検索', class: 'btn btn-primary btn-lg' %>
+        <% end %>
+      </div>
     </div>
-  </div>
 </div>
 
-<div>
-  <% @middle_classes.each do |middle_class| %>
-    <%= link_to middle_class.name, "/show_small/#{middle_class.id}" %>
-    <br><br>
-  <% end %>
+<div class="container">
+<h3>エリアから探す</h3>
+  <div class="row search_areas">
+    <div class="col-xs-4 col-sm-3 col-md-2">
+      <div class="prefecture">
+        <%= link_to "北海道", "/show_small/1" %>
+        </div>
+    </div>
+    <div class="col-xs-4 col-sm-3 col-md-2">
+      <div class="prefecture">
+        <%= link_to "東北", "/show_middle?min=2&max=7" %>
+      </div>
+    </div>    
+    <div class="col-xs-4 col-sm-3 col-md-2">
+      <div class="prefecture">
+        <%= link_to "関東", "/show_middle?min=8&max=14" %>
+      </div>
+    </div>
+    <div class="col-xs-4 col-sm-3 col-md-2 mr-sm--5">
+      <div class="prefecture">
+        <%= link_to "甲信越", "/show_middle?id=15&id=19&id=20" %>
+      </div>
+    </div>
+    <div class="col-xs-4 col-sm-3 col-md-2">
+      <div class="prefecture">
+        <%= link_to "北陸", "/show_middle?min=16&max=18" %>
+      </div>
+    </div>
+    <div class="col-xs-4 col-sm-3 col-md-2">
+      <div class="prefecture">
+        <%= link_to "東海", "/show_middle?min=21&max=24" %>
+      </div>
+    </div>
+    <div class="col-xs-4 col-sm-3 col-md-2">
+      <div class="prefecture">
+        <%= link_to "関西・近畿", "/show_middle?min=25&max=30" %>
+      </div>
+    </div>
+    <div class="col-xs-4 col-sm-3 col-md-2">
+      <div class="prefecture">
+        <%= link_to "中国", "/show_middle?min=31&max=35" %>
+      </div>
+    </div>
+    <div class="col-xs-4 col-sm-3 col-md-2">
+      <div class="prefecture">
+        <%= link_to "四国", "/show_middle?min=36&max=39" %>
+      </div>
+    </div>
+    <div class="col-xs-4 col-sm-3 col-md-2">
+      <div class="prefecture">
+        <%= link_to "九州", "/show_middle?min=40&max=46" %>
+      </div>
+    </div>
+    <div class="col-xs-4 col-sm-3 col-md-2">
+      <div class="prefecture">
+        <%= link_to "沖縄", "/show_small/47" %>
+      </div>
+    </div>
+  </div>
 </div>

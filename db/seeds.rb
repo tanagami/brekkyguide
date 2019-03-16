@@ -26,8 +26,8 @@ def read_detail(result1, result2, result3)
   middlie_class_code = result1["middleClass"].first["middleClassCode"]
   middle_class = MiddleClass.find_by(code: middlie_class_code)      
   middle_class_id = middle_class.id
-  small_class_code = result2["smallClass"].first["smallClassCode"]
-  small_class = SmallClass.find_by(code: small_class_code)
+  small_class_name = result2["smallClass"].first["smallClassName"]
+  small_class = SmallClass.find_by(name: small_class_name)
   small_class_id = small_class.id
   {
     code: code,

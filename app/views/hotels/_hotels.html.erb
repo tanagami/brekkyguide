@@ -1,28 +1,37 @@
-<% if hotels.present? %>
+<% if hotels.second.present? %>
   <div class="row">
     <% hotels.each do |hotel| %>
       <div class="item">
-        <div class="col-md-3 col-sm-4 col-xs-12">
+        <div class="col-xs-12 col-sm-6 col-md-4">
           <div class="panel panel-default">
             <div class="panel-heading text-center">
               <img src="<%= hotel.image_url %>" alt="" >
             </div>
             <div class="panel-body">
-              <% if hotel.persisted? %>
-                <p class="item-title"><%= link_to hotel.name, hotel %></p>
-              <% else %>
-                <p class="item-title"><%= hotel.name %></p>
-              <% end %>
-              食事レビュー：<%= hotel.meal_average %>
-              <div class="buttons text-center">
-                <% if logged_in? %>
-                  <%= render 'favorites/like_button', hotel: hotel %>
-                <% end %>
-              </div>
+              <p class="item-title">
+                <%= link_to hotel.name,
+                controller: "hotels",
+                action: "new",
+                hotelNo: hotel.no %>
+              </p>
+              <p class="hotel-address"><%= hotel.address1 %>／<%= hotel.address2 %></p>
+              <p>食事レビュー：<span class="meal_average"><%= hotel.meal_average %></span></p>
+              <p>1泊あたり<span class="min_charge"><%= hotel.min_charge %>円</span>〜</p>
             </div>
           </div>
         </div>
       </div>
     <% end %>
   </div>
+<% else %>
+  <% hotel = hotels.first %><br><br>
+  <%= hotel.name %><br><br>
+  <img src="<%= hotel.image_url %>" alt="" ><br><br>
+  総合評価：<%= hotel.review_average %>／件数：<%= hotel.review_count %><br><br>
+  食事レビュー：<%= hotel.meal_average %><br><br>
+  特色：<%= hotel.special %><br><br>
+  アクセス：<%= hotel.access %><br><br>
+  最安料金：<%= hotel.min_charge %><br><br>
+  <%= link_to "詳細リンク", hotel.information_url %><br><br>
+  お気に入り登録：<br><br>
 <% end %>

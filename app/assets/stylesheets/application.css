@@ -23,7 +23,7 @@ footer {
   margin-bottom: 20px;
   width: 100%;
   height: 300px;
-  background: url("/images/cover-bg.jpg") center center no-repeat;
+  background: url("/images/cover.jpg") center center no-repeat;
   background-size: cover;
 }
 .cover .cover-inner {
@@ -45,13 +45,32 @@ footer {
 }
 
 /* search */
-.search {
-  margin-bottom: 20px;
+.search_keywords {
+  margin: 0 0 50px;
+  padding: 50px;
+  background-color: white;
 }
-
+.search_areas{
+  background-color: white;
+  margin: 0 0 50px;
+}
+.col-xs-4 {
+  padding: 5px 10px 5px;
+}
+.prefecture {
+  padding: 25px;
+  margin: 5px 0 5px;
+  text-align: center;
+  background-color: #ffd700;
+  border-radius: 0.5em;
+}
+.prefecture a {
+  color: #000000;
+  font-weight: bold;
+}
 /* item */
 .item .panel-body {
-  height: 120px;
+  height: 160px;
 }
 .item .panel-heading {
   height: 250px;
@@ -60,16 +79,30 @@ footer {
   height: 100%;
   max-width: 100%;
 }
+.item .panel-body p {
+  text-align: center;
+}
 p.item-title {
   /* 文の行数を2行に保ち、最後に ... を追加するスタイル */
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
   overflow: hidden;
+  font-weight: bold;
 }
-.item .buttons form {
-  display: inline-block;
-  margin: 0 5px;
+p.hotel-address {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+}
+span.meal_average {
+  display: inline;
+  font-size: 1.5em;
+  background: linear-gradient(transparent 75%, #ffd700 70%);
+}
+span.min_charge {
+  color: #ff8c00;
 }
 
 /* users */
