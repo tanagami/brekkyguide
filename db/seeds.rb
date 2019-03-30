@@ -1,3 +1,5 @@
+require 'net/http'
+
 def read_middle(result)
   code = result["middleClass"].first["middleClassCode"]
   name = result["middleClass"].first["middleClassName"]
