@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="user-selected" ><i class="fas fa-clipboard-check fa-fw"></i>都道府県：<span><%= @middle_class.name %></span></div>
+  <h4><i class="fas fa-hand-point-right fa-fw c-seagreen"></i> 市区町村を選択</h4>
+  <div class="row search-areas">
+    <% @small_classes.each do |small_class| %>
+      <% detail_class = DetailClass.find_by(small_class_id: small_class.id) %>
+      <% if detail_class.present? %>
+        <div class="col-xs-4 col-sm-3 col-md-2">
+          <div class="area-name small-class">
+            <%= link_to small_class.name, "/detail_classes/#{small_class.id}" %>
+          </div>
+        </div>  
+      <% else %>
+      <% middle_class = MiddleClass.find(small_class.middle_class_id) %>
+        <div class="col-xs-4 col-sm-3 col-md-2">
+          <div class="area-name small-class">
+            <%= link_to small_class.name,
+            controller: "hotels",
+            action: "new",
+            largeclass: "japan",
+            middleclass: middle_class,
+            smallclass: small_class,
+            detailclass: "" %>
+          </div>
+        </div>  
+      <% end %>
+    <% end %>
+  </div>
+</div>

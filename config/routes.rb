@@ -7,11 +7,11 @@ Rails.application.routes.draw do
   
   get 'signup', to: 'users#new'
   
-  get 'show_middle', to: 'areas#show_middle'
-  get 'show_small/:id', to: 'areas#show_small'
-  get 'show_detail/:id', to: 'areas#show_detail'
+  get 'middle_classes', to: 'areas#middle_classes'
+  get 'small_classes/:id', to: 'areas#small_classes'
+  get 'detail_classes/:id', to: 'areas#detail_classes'
   
   resources :users, only: [:show, :new, :create]
-  resources :hotels, only: [:new, :show]
+  resources :hotels, only: [:new]
   resources :favorites, only: [:create, :destroy]
 end

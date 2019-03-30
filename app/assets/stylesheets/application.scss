@@ -1,0 +1,254 @@
+@charset "utf-8";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+/* body */
+body {
+  background: #f2f2f2;
+}
+footer {
+  margin: 40px 0 20px 0;
+}
+
+/* color */
+.c-blue {
+  color: #0000ff;
+}
+.c-orange {
+  color: #ffa500;
+}
+.c-seagreen {
+  color: #3cb371;
+}
+.c-brown {
+  color: #a52a2a;
+}
+
+/* size */
+.little-bigger {
+  font-size: 1.7rem;
+}
+
+/* navbar */
+.navbar {
+  background-color: #fff;
+}
+.navbar-header img {
+  margin-top: 5px;
+  height: 40px;
+}
+
+/* top-page cover */
+.cover {
+  margin-top: -20px;
+  margin-bottom: 20px;
+  width: 100%;
+  height: 300px;
+  background: url("/images/cover-big.jpg") center center no-repeat;
+  background-size: cover;
+}
+.cover .cover-inner {
+  height: 100%;
+  width: 100%;
+  margin: auto;
+  display: table;
+  background-color: rgba(0,0,0,0.3);
+}
+.cover .cover-inner .cover-contents {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  position: relative;
+}
+.cover .cover-inner .cover-contents h1 {
+  margin: 0 0 20px 0;
+  color: #fff;
+  font-weight: bold;
+  letter-spacing: 0.15em;
+  font-size: 4rem;
+}
+.cover .cover-inner .cover-contents p {
+  font-size: 1.6rem;
+  color: #fff;
+}
+
+/* top-page search */
+.search-keywords {
+  margin: 0 0 50px;
+  padding: 50px;
+  background-color: #fff;
+}
+.search-areas{
+  background-color: #fff;
+  margin: 0 0 50px;
+}
+.search-areas .col-xs-4 {
+  padding: 5px 10px 5px;
+}
+.search-areas .area-name {
+  height: 80px;
+  padding: 25px;
+  margin: 5px 0;
+  background-color: #ffd700;
+  border-radius: 0.5em;
+  position: relative;
+}
+.search-areas .small-class, .detail-class {
+  font-size: 1.2rem;
+}
+.search-areas .area-name a {
+  color: #000000;
+  font-weight: bold;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%,-50%);
+  -webkit-transform : translate(-50%,-50%);
+  transform : translate(-50%,-50%);
+  text-align: center;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
+}
+.user-selected {
+  color: #808080;
+  margin: 20px;
+}
+.user-selected span {
+  border-bottom: solid 1px #808080;
+}
+
+/* search-results */
+.ranking-title {
+  text-align: center;
+  margin-bottom: -5px;
+}
+.ranking-title p {
+  color: #808080;
+}
+.hotel .panel-default {
+  height: 450px;
+}
+.hotel .panel-heading {
+  height: 250px;
+}
+.hotel .panel-heading img {
+  height: 100%;
+  max-width: 100%;
+}
+.hotel .panel-body p {
+  text-align: center;
+}
+.hotel .panel-body .title-box {
+  height: 3.6rem;
+  margin: 5px 0;
+}
+.hotel .panel-body p.hotel-title {
+  /* 文の行数を2行に保ち、最後に ... を追加する */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  font-weight: bold;
+  line-height: 1.8rem;
+}
+.hotel .panel-body p.hotel-address {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+}
+.hotel .panel-body span.meal-average {
+  font-size: 2rem;
+  background: linear-gradient(transparent 75%, #ffd700 70%);
+}
+.hotel .panel-body span.min-charge {
+  font-size: 1.5rem;
+  color: #ff0000;
+}
+
+/* detail-hotel */
+.hotel-wrapper {
+  background-color: #fff;
+}
+.hotel-wrapper .hotel-image {
+  width: 80%;
+  margin: 30px;
+}
+.hotel-wrapper .access-box, .charge-box, .review-box {
+  margin: 30px;
+}
+.hotel-wrapper .access-box p,.charge-box p, .review-box p {
+  margin: 5px 0 0 10px;
+}
+.hotel-wrapper .review-box span.review-average {
+  font-size: 2rem;
+  background: linear-gradient(transparent 75%, #ffff00 70%);
+}
+.hotel-wrapper .review-box span.meal-average {
+  font-size: 2rem;
+  background: linear-gradient(transparent 75%, #ffd700 70%);
+}
+.hotel-wrapper .pr-box {
+  position: relative;
+  margin: 30px;
+  padding: 0.5em 1em;
+  border: solid 3px #00bfff;
+  border-radius: 4px;
+}
+.hotel-wrapper .pr-box .box-title {
+  position: absolute;
+  display: inline-block;
+  top: -10px;
+  left: 10px;
+  padding: 0 9px;
+  line-height: 1;
+  font-size: 1.1em;
+  background: #FFF;
+  color: #00bfff;
+  font-weight: bold;
+}
+.hotel-wrapper .pr-box  p {
+  margin: 10px; 
+  padding: 0;
+}
+.hotel-wrapper .charge-box span.min-charge {
+  color: #ff0000;
+  font-size: 2rem;
+}
+.hotel-wrapper .btn-rakuten, .btn-favorite {
+  margin: 30px;
+}
+
+/* users */
+.user-profile .name {
+  margin-bottom: 20px;
+}
+.user-profile .name h1 {
+  text-shadow: 1px 1px 1px #fff;
+  font-weight: bold;
+}
+.user-profile .status ul {
+  margin: 0 auto 10px;
+  padding: 0;
+  display: table;
+}
+.user-profile .status ul li {
+  width: 120px;
+  padding: 5px 0;
+  border-right: 1px solid #ddd;
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  color: #777;
+}
+.user-profile .status ul li:last-child {
+  border: none;
+}
+.user-profile .status ul li .status-label {
+  font-size: 12px;
+}
+.user-profile .status ul li .status-value {
+  font-size: 18px;
+}

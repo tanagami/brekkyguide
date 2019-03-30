@@ -1,13 +1,18 @@
 class AreasController < ApplicationController
-  def show_middle
-    @middle_classes = MiddleClass.all.where(id: params[:min]..params[:max])
+  def middle_classes
+    @middle_classes = MiddleClass.where(id: params[:min]..params[:max])
+    # 甲信越
+    @middle_classes = MiddleClass.where(id: params[:id]) if params[:id]
   end
   
-  def show_small
-    @small_classes = SmallClass.all.where(middle_class_id: params[:id])
+  def small_classes
+    @middle_class = MiddleClass.find(params[:id])
+    @small_classes = SmallClass.where(middle_class_id: params[:id])
   end
   
-  def show_detail
-    @detail_classes = DetailClass.all.where(small_class_id: params[:id])
+  def detail_classes
+    @small_class = SmallClass.find(params[:id])
+    @middle_class = MiddleClass.find(@small_class.middle_class_id)
+    @detail_classes = DetailClass.where(small_class_id: params[:id])
   end
 end

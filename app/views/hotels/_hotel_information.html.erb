@@ -1,0 +1,33 @@
+<h3><%= hotel.name %></h3>
+<div class="row hotel-wrapper">
+  <div class="text-center col-sm-6">
+    <img class="hotel-image" src="<%= hotel.image_url %>" alt="">
+  </div>
+  <div class="col-sm-6">
+    <div class="review-box">
+      <span class="little-bigger"><i class="fas fa-star fa-fw"></i>評価</span>
+      <p>総合評価　<span class="review-average"></i><%= hotel.review_average %></span>（<%= hotel.review_count %>件）</p>
+      <p>食事評価　<span class="meal-average"><%= hotel.meal_average %></span></p>
+    </div>
+    <div class="pr-box">
+      <span class="box-title">ホテルPR</span>
+      <p><%= hotel.special %></p>
+    </div>
+    <div class="access-box">
+      <span class="little-bigger"><i class="fas fa-subway fa-fw"></i>アクセス</span>
+      <p><%= hotel.access %></p>
+    </div>
+    <div class="charge-box">
+      <span class="little-bigger"><i class="fas fa-dollar-sign fa-fw"></i>最安料金</span>
+      <p>1泊あたり<span class="min-charge"><%= hotel.min_charge %>円</span>〜</p>
+    </div>
+    <div class="btn-rakuten">
+      <a href="<%= hotel.information_url %>" class="btn btn-block btn-lg btn-success"><span class="glyphicon glyphicon-share"></span>楽天トラベルで詳細を見る</a>
+    </div>
+    <% if logged_in? %>
+      <div class="btn-favorite">
+        <%= render 'favorites/like_button', hotel: hotel %>
+      </div>
+    <% end %>
+  </div>
+</div>

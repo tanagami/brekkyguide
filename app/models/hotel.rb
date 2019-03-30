@@ -13,7 +13,6 @@ class Hotel < ApplicationRecord
   validates :review_count, presence: true, length: { maximum: 255 }
   validates :review_average, presence: true, length: { maximum: 255 }
   validates :meal_average, presence: true, length: { maximum: 255 }
-  validates :breakfast_place, length: { maximum: 255 }
 
   has_many :favorites
   has_many :users, through: :favorites  

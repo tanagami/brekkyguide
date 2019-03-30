@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190310021526) do
+ActiveRecord::Schema.define(version: 20190326130925) do
 
   create_table "detail_classes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "code"
@@ -43,7 +43,6 @@ ActiveRecord::Schema.define(version: 20190310021526) do
     t.integer  "review_count"
     t.float    "review_average",  limit: 24
     t.float    "meal_average",    limit: 24
-    t.string   "breakfast_place"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
     t.integer  "no"

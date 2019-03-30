@@ -3,7 +3,15 @@ class FavoritesController < ApplicationController
     @hotel = Hotel.find_or_initialize_by(no: params[:hotel_no])
     
     unless @hotel.persisted?
-      uri = URI.parse("https://app.rakuten.co.jp/services/api/Travel/SimpleHotelSearch/20170426?format=json&affiliateId=17e357ca.94ed3df2.17e357cb.ba7a82c9&responseType=large&hotelNo=#{@hotel.no}&applicationId=1029124388619924322")
+      uri_base = "https://app.rakuten.co.jp/services/api/Travel/SimpleHotelSearch/20170426?"
+      params_base = {
+        format: 'json',
+        hotelNo: @hotel.no,
+        affiliateId: ENV['RAKUTEN_AFFILIATE_ID'],
+        applicationId: ENV['RAKUTEN_APPLICATION_ID']
+      }
+      uri = URI.parse(uri_base + params_base.to_param)
+      
       json = Net::HTTP.get(uri)
       results_json = JSON.parse(json)
       result = results_json["hotels"].first

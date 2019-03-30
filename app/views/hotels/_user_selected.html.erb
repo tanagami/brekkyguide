@@ -1,0 +1,18 @@
+<div class="ranking-title">
+  <h2>ランキング</h2>
+  <p>朝食付きプランのあるホテル・旅館（食事評価の高い順）</p>
+</div>
+<div class="user-selected text-center" >
+  <% if @middleclass.present? %>
+    <i class="fas fa-clipboard-check fa-fw"></i>都道府県：<span><%= @middleclass.name %></span>
+  <% end %>
+  <% if @smallclass.present? %>
+    ,　市区町村：<span><%= @smallclass.name %></span>
+  <% end %>
+  <% if @detailclass.present? %>
+    ,　地域：<span><%= @detailclass.name %></span>
+  <% end %>
+  <% if @display_keyword.present? %>
+    キーワード：<span><%= @display_keyword %></span>
+  <% end %>
+</div>

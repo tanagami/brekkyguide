@@ -26,9 +26,6 @@ class ApplicationController < ActionController::Base
     review_count = result['hotel'].first["hotelBasicInfo"]["reviewCount"]
     review_average = result['hotel'].first["hotelBasicInfo"]["reviewAverage"]
     meal_average = result['hotel'].second["hotelRatingInfo"]["mealAverage"]
-    if result['hotel'][3]["hotelFacilitiesInfo"]["aboutMealPlace"].present?
-      breakfast_place = result['hotel'][3]["hotelFacilitiesInfo"]["aboutMealPlace"].first["breakfastPlace"]
-    end
     {
       no: no,
       name: name,
@@ -44,7 +41,6 @@ class ApplicationController < ActionController::Base
       review_count: review_count,
       review_average: review_average,
       meal_average: meal_average,
-      breakfast_place: breakfast_place
     }
   end
 end

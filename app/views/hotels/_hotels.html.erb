@@ -1,37 +1,31 @@
-<% if hotels.second.present? %>
-  <div class="row">
-    <% hotels.each do |hotel| %>
-      <div class="item">
-        <div class="col-xs-12 col-sm-6 col-md-4">
-          <div class="panel panel-default">
-            <div class="panel-heading text-center">
-              <img src="<%= hotel.image_url %>" alt="" >
-            </div>
-            <div class="panel-body">
-              <p class="item-title">
+<div class="row">
+  <% hotels.each do |hotel| %>
+    <div class="hotel">
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        <div class="panel panel-default">
+          <div class="panel-heading text-center">
+            <img src="<%= hotel.image_url %>" alt="" >
+          </div>
+          <div class="panel-body">
+            <div class="title-box">
+              <p class="hotel-title">
                 <%= link_to hotel.name,
                 controller: "hotels",
                 action: "new",
-                hotelNo: hotel.no %>
+                hotel_no: hotel.no %>
               </p>
-              <p class="hotel-address"><%= hotel.address1 %>／<%= hotel.address2 %></p>
-              <p>食事レビュー：<span class="meal_average"><%= hotel.meal_average %></span></p>
-              <p>1泊あたり<span class="min_charge"><%= hotel.min_charge %>円</span>〜</p>
+            </div>
+            <p class="hotel-address"><%= hotel.address1 %>／<%= hotel.address2 %></p>
+            <p>食事評価：<span class="meal-average"><%= hotel.meal_average %></span></p>
+            <p>1泊あたり<span class="min-charge"><%= hotel.min_charge %>円</span>〜</p>
+            <div class="btn-favorite-s text-center">
+              <% if logged_in? %>
+                <%= render 'favorites/like_button_s', hotel: hotel %>
+              <% end %>
             </div>
           </div>
         </div>
       </div>
-    <% end %>
-  </div>
-<% else %>
-  <% hotel = hotels.first %><br><br>
-  <%= hotel.name %><br><br>
-  <img src="<%= hotel.image_url %>" alt="" ><br><br>
-  総合評価：<%= hotel.review_average %>／件数：<%= hotel.review_count %><br><br>
-  食事レビュー：<%= hotel.meal_average %><br><br>
-  特色：<%= hotel.special %><br><br>
-  アクセス：<%= hotel.access %><br><br>
-  最安料金：<%= hotel.min_charge %><br><br>
-  <%= link_to "詳細リンク", hotel.information_url %><br><br>
-  お気に入り登録：<br><br>
-<% end %>
+    </div>
+  <% end %>
+</div>

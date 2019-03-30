@@ -1,11 +1,11 @@
 <% if current_user.like?(hotel) %>
   <%= form_tag(favorite_path(hotel.id), method: :delete) do %>
     <%= hidden_field_tag :hotel_id, hotel.id %>
-    <%= submit_tag 'お気に入りから解除する', class: 'btn btn-block btn-lg btn-info' %>
+    <%= submit_tag 'お気に入り解除', class: 'btn btn-info btn-sm' %>
   <% end %>
 <% else %>
   <%= form_tag(favorites_path) do %>
     <%= hidden_field_tag :hotel_no, hotel.no %>
-    <%= submit_tag 'お気に入りに登録する', class: 'btn btn-block btn-lg btn-warning' %>
+    <%= submit_tag 'お気に入り登録', class: 'btn btn-warning btn-sm' %>
   <% end %>
 <% end %>
