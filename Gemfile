@@ -57,3 +57,7 @@ gem 'dotenv-rails'
 gem 'pry-byebug', group: :development
 
 gem 'font-awesome-sass', '~> 5.6.1'
+
+group :production do
+  gem 'pg', '0.21.0'
+end
