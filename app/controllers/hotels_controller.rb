@@ -10,6 +10,7 @@ class HotelsController < ApplicationController
     @middleclass = MiddleClass.find(@middleclass_id) if @middleclass_id
     @smallclass = SmallClass.find(@smallclass_id) if @smallclass_id
     if @detailclass_id.present?
+      @detailclass = DetailClass.find(@detailclass_id)
       @detailclass_code = DetailClass.find(@detailclass_id).code
     else
       @detailclass_code = ""
@@ -34,7 +35,7 @@ class HotelsController < ApplicationController
       json = Net::HTTP.get(uri)
       results_json = JSON.parse(json)
       results = results_json["hotels"]
-
+      
       results.each do |result|
         hotel = Hotel.find_by(no: result['hotel'].first["hotelBasicInfo"]["hotelNo"])
         unless hotel
@@ -61,15 +62,19 @@ class HotelsController < ApplicationController
       json = Net::HTTP.get(uri)
       results_json = JSON.parse(json)
       results = results_json["hotels"]
-      
-      results.each do |result|
-        hotel = Hotel.find_by(no: result['hotel'].first["hotelBasicInfo"]["hotelNo"])
-        unless hotel
-          hotel = Hotel.new(read(result))
-          hotel.meal_average = nil if hotel.meal_average == 0.0
+
+      if results.present?
+        results.each do |result|
+          hotel = Hotel.find_by(no: result['hotel'].first["hotelBasicInfo"]["hotelNo"])
+          unless hotel
+            hotel = Hotel.new(read(result))
+            hotel.meal_average = nil if hotel.meal_average == 0.0
+          end
+          @hotels << hotel if hotel.meal_average
+          @hotels = @hotels.sort_by{|o| o.meal_average.to_f }.reverse
         end
-        @hotels << hotel if hotel.meal_average
-        @hotels = @hotels.sort_by{|o| o.meal_average.to_f }.reverse
+      else
+        render :new
       end
     end
     
