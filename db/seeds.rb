@@ -39,7 +39,13 @@ def read_detail(result1, result2, result3)
   }
 end
 
-uri = URI.parse("https://app.rakuten.co.jp/services/api/Travel/GetAreaClass/20131024?format=json&applicationId=1029124388619924322")
+uri_base = "https://app.rakuten.co.jp/services/api/Travel/GetAreaClass/20131024?"
+params_base = {
+  format: 'json',
+  applicationId: ENV['RAKUTEN_APPLICATION_ID']
+}
+uri = URI.parse(uri_base + params_base.to_param)
+
 json = Net::HTTP.get(uri)
 results_json = JSON.parse(json)
 results = results_json["areaClasses"].first.second.first["largeClass"].second["middleClasses"]
