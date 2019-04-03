@@ -2,11 +2,7 @@
   <h4><i class="fas fa-hand-point-right fa-fw c-seagreen"></i> 都道府県を選択</h4>
   <div class="row search-areas">
     <% @middle_classes.each do |middle_class| %>
-      <div class="col-xs-4 col-sm-3 col-md-2">
-        <div class="area-name">
-          <%= link_to middle_class.name, "/small_classes/#{middle_class.id}" %>
-        </div>
-      </div>
+      <%= render 'areas/area_button', name: middle_class.name, uri: "/small_classes/#{middle_class.id}" %>
     <% end %>
   </div>
 </div>

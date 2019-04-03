@@ -92,11 +92,15 @@ footer {
   background-color: #ffd700;
   border-radius: 0.5em;
   position: relative;
+  transition: transform 0.1s;
+}
+.search-areas .area-name:hover {
+  transform: scale(1.1);
 }
 .search-areas .small-class, .detail-class {
   font-size: 1.2rem;
 }
-.search-areas .area-name a {
+.search-areas .area-name p {
   color: #000000;
   font-weight: bold;
   position: absolute;

@@ -6,15 +6,16 @@
       <% middle_class = MiddleClass.find(detail_class.middle_class_id) %>
       <% small_class = SmallClass.find(detail_class.small_class_id) %>
       <div class="col-xs-4 col-sm-3 col-md-2">
-        <div class="area-name detail-class">
-          <%= link_to detail_class.name,
-            controller: "hotels",
+        <%= link_to ({controller: "hotels",
             action: "new",
             largeclass: "japan",
             middleclass: middle_class,
             smallclass: small_class,
-            detailclass: detail_class %>
-        </div>
+            detailclass: detail_class}) do %>
+          <div class="area-name detail-class">
+            <p><%= detail_class.name %></p>
+          </div>
+        <% end %>
       </div>
     <% end %>
   </div>

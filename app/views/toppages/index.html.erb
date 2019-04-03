@@ -26,60 +26,16 @@
 <div class="container">
   <h3><i class="fas fa-map-marker-alt fa-fw c-seagreen"></i>エリアから探す</h3>
   <div class="row search-areas">
-    <div class="col-xs-4 col-sm-3 col-md-2">
-      <div class="area-name">
-        <%= link_to "北海道", "/small_classes/1" %>
-      </div>
-    </div>
-    <div class="col-xs-4 col-sm-3 col-md-2">
-      <div class="area-name">
-        <%= link_to "東北", "/middle_classes?min=2&max=7" %>
-      </div>
-    </div>    
-    <div class="col-xs-4 col-sm-3 col-md-2">
-      <div class="area-name">
-        <%= link_to "関東", "/middle_classes?min=8&max=14" %>
-      </div>
-    </div>
-    <div class="col-xs-4 col-sm-3 col-md-2 mr-sm--5">
-      <div class="area-name">
-        <%= link_to "甲信越", "/middle_classes?id[]=15&id[]=19&id[]=20" %>
-      </div>
-    </div>
-    <div class="col-xs-4 col-sm-3 col-md-2">
-      <div class="area-name">
-        <%= link_to "北陸", "/middle_classes?min=16&max=18" %>
-      </div>
-    </div>
-    <div class="col-xs-4 col-sm-3 col-md-2">
-      <div class="area-name">
-        <%= link_to "東海", "/middle_classes?min=21&max=24" %>
-      </div>
-    </div>
-    <div class="col-xs-4 col-sm-3 col-md-2">
-      <div class="area-name">
-        <%= link_to "関西・近畿", "/middle_classes?min=25&max=30" %>
-      </div>
-    </div>
-    <div class="col-xs-4 col-sm-3 col-md-2">
-      <div class="area-name">
-        <%= link_to "中国", "/middle_classes?min=31&max=35" %>
-      </div>
-    </div>
-    <div class="col-xs-4 col-sm-3 col-md-2">
-      <div class="area-name">
-        <%= link_to "四国", "/middle_classes?min=36&max=39" %>
-      </div>
-    </div>
-    <div class="col-xs-4 col-sm-3 col-md-2">
-      <div class="area-name">
-        <%= link_to "九州", "/middle_classes?min=40&max=46" %>
-      </div>
-    </div>
-    <div class="col-xs-4 col-sm-3 col-md-2">
-      <div class="area-name">
-        <%= link_to "沖縄", "/small_classes/47" %>
-      </div>
-    </div>
+    <%= render 'areas/area_button', name: "北海道", uri: "/small_classes/1" %>
+    <%= render 'areas/area_button', name: "東北", uri: "/middle_classes?min=2&max=7" %>
+    <%= render 'areas/area_button', name: "関東", uri: "/middle_classes?min=8&max=14" %>
+    <%= render 'areas/area_button', name: "甲信越", uri: "/middle_classes?id[]=15&id[]=19&id[]=20" %>
+    <%= render 'areas/area_button', name: "北陸", uri: "/middle_classes?min=16&max=18" %>
+    <%= render 'areas/area_button', name: "東海", uri: "/middle_classes?min=21&max=24" %>
+    <%= render 'areas/area_button', name: "関西・近畿", uri: "/middle_classes?min=25&max=30" %>
+    <%= render 'areas/area_button', name: "中国", uri: "/middle_classes?min=31&max=35" %>
+    <%= render 'areas/area_button', name: "四国", uri: "/middle_classes?min=36&max=39" %>
+    <%= render 'areas/area_button', name: "九州", uri: "/middle_classes?min=40&max=46" %>
+    <%= render 'areas/area_button', name: "沖縄", uri: "/small_classes/47" %>
   </div>
 </div>

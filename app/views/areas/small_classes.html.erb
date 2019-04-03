@@ -5,23 +5,20 @@
     <% @small_classes.each do |small_class| %>
       <% detail_class = DetailClass.find_by(small_class_id: small_class.id) %>
       <% if detail_class.present? %>
-        <div class="col-xs-4 col-sm-3 col-md-2">
-          <div class="area-name small-class">
-            <%= link_to small_class.name, "/detail_classes/#{small_class.id}" %>
-          </div>
-        </div>  
+        <%= render 'areas/area_button', name: small_class.name, uri: "/detail_classes/#{small_class.id}" %>
       <% else %>
-      <% middle_class = MiddleClass.find(small_class.middle_class_id) %>
+        <% middle_class = MiddleClass.find(small_class.middle_class_id) %>
         <div class="col-xs-4 col-sm-3 col-md-2">
-          <div class="area-name small-class">
-            <%= link_to small_class.name,
-            controller: "hotels",
-            action: "new",
-            largeclass: "japan",
-            middleclass: middle_class,
-            smallclass: small_class,
-            detailclass: "" %>
-          </div>
+          <%= link_to ({controller: "hotels",
+              action: "new",
+              largeclass: "japan",
+              middleclass: middle_class,
+              smallclass: small_class,
+              detailclass: ""}) do %>
+            <div class="area-name small-class">
+              <p><%= small_class.name %></p>
+            </div>
+          <% end %>
         </div>  
       <% end %>
     <% end %>
